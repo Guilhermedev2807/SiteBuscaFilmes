@@ -1,0 +1,10 @@
+# Chave da API (nunca publicar)
+config.local.php
+
+# Cache das respostas do TMDB
+cache/
+
+# Arquivos do sistema e do editor
+.DS_Store
+Thumbs.db
+.vscode/

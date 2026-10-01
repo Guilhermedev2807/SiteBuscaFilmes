@@ -1,0 +1,100 @@
+:root {
+  --fundo: #15131c;
+  --painel: #211e2c;
+  --linha: #373244;
+  --texto: #efe9dd;
+  --suave: #a9a3b8;
+  --acento: #f2b84b;
+  --acento-texto: #1a1408;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0; background: var(--fundo); color: var(--texto);
+  font: 400 1rem/1.6 "Instrument Sans", system-ui, sans-serif;
+}
+a { color: inherit; text-decoration: none; }
+:focus-visible { outline: 2px solid var(--acento); outline-offset: 3px; }
+
+h1, h2, .marca { font-family: "Bricolage Grotesque", system-ui, sans-serif; line-height: 1.1; }
+
+/* Topo */
+.topo {
+  display: flex; flex-wrap: wrap; align-items: center; gap: 1rem 1.5rem;
+  padding: 1rem clamp(1rem, 4vw, 3rem); border-bottom: 1px solid var(--linha);
+}
+.marca { font-size: 1.5rem; font-weight: 800; color: var(--acento); }
+.busca { display: flex; flex: 1 1 320px; max-width: 560px; }
+.busca input {
+  flex: 1; min-width: 0; padding: .7rem 1rem; font: inherit; color: var(--texto);
+  background: var(--painel); border: 1px solid var(--linha); border-right: 0;
+  border-radius: 999px 0 0 999px;
+}
+.busca button {
+  padding: .7rem 1.3rem; font: 600 1rem "Instrument Sans", sans-serif; cursor: pointer;
+  background: var(--acento); color: var(--acento-texto); border: 0; border-radius: 0 999px 999px 0;
+}
+.tipos { display: flex; flex-wrap: wrap; gap: .5rem; }
+.tipos a {
+  padding: .35rem .9rem; border: 1px solid var(--linha); border-radius: 999px; color: var(--suave);
+}
+.tipos a:hover { color: var(--texto); border-color: var(--suave); }
+.tipos a.ativo { background: var(--texto); color: var(--fundo); border-color: var(--texto); }
+.voltar { margin-left: auto; color: var(--suave); }
+
+/* Lista */
+main { padding: 2rem clamp(1rem, 4vw, 3rem) 3rem; max-width: 1400px; margin: 0 auto; }
+main h1 { font-size: clamp(1.6rem, 4vw, 2.4rem); margin: 0 0 1.5rem; font-weight: 800; }
+.aviso { background: #3a2a12; border: 1px solid var(--acento); padding: .8rem 1rem; border-radius: 6px; }
+.vazio { color: var(--suave); }
+
+.grade {
+  list-style: none; margin: 0; padding: 0;
+  display: grid; gap: 1.5rem 1.1rem;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+}
+.grade a { display: block; }
+.capa {
+  position: relative; aspect-ratio: 2 / 3; border-radius: 6px; overflow: hidden;
+  background: var(--painel); margin-bottom: .6rem;
+}
+.capa img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.sem-capa { display: grid; place-items: center; height: 100%; color: var(--suave); font-size: .9rem; }
+.nota {
+  position: absolute; top: .5rem; left: .5rem; padding: .1rem .5rem;
+  background: var(--acento); color: var(--acento-texto); font-weight: 600; font-size: .85rem;
+  border-radius: 3px;
+}
+.grade strong { display: block; line-height: 1.3; }
+.grade a:hover strong { color: var(--acento); }
+.grade small { color: var(--suave); }
+
+.paginas { display: flex; justify-content: center; align-items: center; gap: 1.5rem; margin-top: 2.5rem; color: var(--suave); }
+.paginas a { padding: .5rem 1.1rem; border: 1px solid var(--linha); border-radius: 999px; color: var(--texto); }
+.paginas a:hover { border-color: var(--acento); }
+
+/* Detalhes */
+.detalhe { position: relative; }
+.fundo {
+  position: absolute; inset: 0 0 auto 0; height: 380px; z-index: -1;
+  background-size: cover; background-position: center top; opacity: .25;
+  mask-image: linear-gradient(#000, transparent);
+  -webkit-mask-image: linear-gradient(#000, transparent);
+}
+.ficha { display: flex; flex-wrap: wrap; gap: 2rem; padding-top: 2rem; }
+.poster { width: min(300px, 100%); border-radius: 6px; align-self: flex-start; }
+.texto { flex: 1 1 340px; max-width: 70ch; }
+.texto h1 { font-size: clamp(2rem, 5vw, 3.2rem); margin: 0 0 .3rem; }
+.texto h1 span { color: var(--suave); font-weight: 500; }
+.texto h2 { font-size: 1.2rem; margin: 1.6rem 0 .4rem; }
+.original { color: var(--suave); margin: 0 0 .5rem; }
+.meta { color: var(--acento); margin: .5rem 0; }
+.tagline { font-style: italic; color: var(--suave); }
+.trailer { margin-top: 2.5rem; }
+.trailer h2 { font-size: 1.4rem; }
+.video { aspect-ratio: 16 / 9; max-width: 860px; }
+.video iframe { width: 100%; height: 100%; border: 0; border-radius: 6px; }
+
+footer { padding: 2rem clamp(1rem, 4vw, 3rem); color: var(--suave); font-size: .85rem; border-top: 1px solid var(--linha); }
+
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
