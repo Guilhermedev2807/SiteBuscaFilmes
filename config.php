@@ -5,8 +5,7 @@
 if (is_file(__DIR__ . '/config.local.php')) {
     require __DIR__ . '/config.local.php';
 }
-defined('TMDB_KEY') || define('TMDB_KEY', 'COLE_SUA_CHAVE_AQUI');
-
+defined('TMDB_KEY') || define('TMDB_KEY', getenv('TMDB_KEY') ?: 'COLE_SUA_CHAVE_AQUI');
 const TMDB_API   = 'https://api.themoviedb.org/3';
 const TMDB_IMG   = 'https://image.tmdb.org/t/p/';
 const CACHE_SEGS = 600; // 10 minutos
@@ -30,8 +29,7 @@ function tmdb(string $caminho, array $params = []): array {
     $url = TMDB_API . $caminho . '?' . http_build_query(array_filter($params, fn($v) => $v !== null));
 
     $dir = __DIR__ . '/cache';
-    if (!is_dir($dir)) @mkdir($dir, 0775, true);
-    $arq = $dir . '/' . md5($url) . '.json';
+$dir = sys_get_temp_dir() . '/sessaolivre-cache';    $arq = $dir . '/' . md5($url) . '.json';
 
     if (is_file($arq) && time() - filemtime($arq) < CACHE_SEGS) {
         return json_decode(file_get_contents($arq), true) ?: [];
